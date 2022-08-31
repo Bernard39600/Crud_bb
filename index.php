@@ -24,14 +24,13 @@
         </div>
     </nav>
     <?php
-    // Faire une connexion à la fonction
+    // connexion à la fonction: load base de donnees
     $DB = new connexionDB();
     ?>
 </body>
 
 <?php
 
-// Déclaration d'une nouvelle classe
 class connexionDB
 {
     private $host    = 'localhost';
@@ -74,9 +73,15 @@ class connexionDB
         return $req;
     }
 }
+// trier par colonne
+// order by id par defaut
+// recup valeur recup ds menu deroulant: ORDER BY valeur?
 
-$req = $DB->query("SELECT * FROM crud_concierge_i");
+$ModeDeTri = "SELECT * FROM crud_concierge_i ORDER BY id";
+$req = $DB->query($ModeDeTri);
 $req = $req->fetchAll();
+
+// effacer: $modeDeTri=""
 
 ?>
 
@@ -90,6 +95,20 @@ $req = $req->fetchAll();
                 <td>Date</td>
                 <td>Type d'intervention</td>
                 <td>Etage</td>
+                <td>
+                <nav class="MenuD1">
+                    <ul>
+                        <li class="deroulant"><a>Trier par</a>
+                            <ul class="sous">
+                                <li><a href="index.php" value="id">Index</a></li>
+                                <li><a href="index.php"value="date">Date</a></li>
+                                <li><a href="index.php" value="intervention">Intervention</a></li>
+                                <li><a href="index.php" value="etage">Etage</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                </td>
             </tr>
         </thead>
 
@@ -106,10 +125,10 @@ $req = $req->fetchAll();
                     <td><?= $req[$index]['etage'] ?></td>
 
                     <form action="delete.php" method="get">
-                        <td class="btn_delete"><button class="trash"><a href="delete.php?ToDelete=<?=$req[$index]['id'] ?>" >Supprimer</a></button></td>
+                        <td class="btn_delete"><button class="trash"><a href="delete.php?ToDelete=<?= $req[$index]['id'] ?>">Supprimer</a></button></td>
                     </form>
                 </tr>
-                <?php }
+            <?php }
             ?>
 
         </tbody>
