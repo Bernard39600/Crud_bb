@@ -126,13 +126,13 @@ $req = $req->fetchAll();
                 $index = strval($i);
             ?>
                 <tr>
-                    <td><?= $req[$index]['id'] ?></td>
-                    <td><?= $req[$index]['date'] ?></td>
-                    <td><?= $req[$index]['intervention'] ?></td>
-                    <td><?= $req[$index]['etage'] ?></td>
+                    <td><?= $req[$i]['id'] ?></td>
+                    <td><?= $req[$i]['date'] ?></td>
+                    <td><?= $req[$i]['intervention'] ?></td>
+                    <td><?= $req[$i]['etage'] ?></td>
 
                     <form action="delete.php" method="get">
-                        <td class="btn_delete"><button class="trash"><a href="delete.php?ToDelete=<?= $req[$index]['id'] ?>">Supprimer</a></button></td>
+                        <td class="btn_delete"><button class="trash"><a href="delete.php?ToDelete=<?= $req[$i]['id'] ?>">Supprimer</a></button></td>
                     </form>
                 </tr>
             <?php }
