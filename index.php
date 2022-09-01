@@ -73,16 +73,17 @@ class connexionDB
         return $req;
     }
 }
-// trier par colonne, order by id par defaut
+// trier par colonne, order by id :par defaut
 // recup valeur $modeDeTri recup ds menu deroulant: ORDER BY $modeDeTri
 
 // if ($ModeDeTri=="") {
 //     $req = $DB->query("SELECT * FROM crud_concierge_i ORDER BY id");
 //     $req = $req->fetchAll();
-//     effacer: $modeDeTri=""
+//     $modeDeTri=""
 // } else {
-//     echo $ModeDeTri;
-//     $req = $DB->query($ModeDeTri); 
+//     $req = $DB->query($ModeDeTri);
+//     $req = $req->fetchAll();
+//     $modeDeTri="" 
 // }
 
 // $ModeDeTri = "SELECT * FROM crud_concierge_i ORDER BY id";
@@ -105,12 +106,13 @@ $req = $req->fetchAll();
                 <td>
                     <nav class="MenuD1">
                         <ul>
-                            <li class="deroulant"><a>Trier par</a>
+                            <li class="deroulant" method="post"><a>Trier par</a>
                                 <ul class="sous">
                                     <li><a href="index.php" <?= $ModeDeTri="SELECT * FROM crud_concierge_i ORDER BY id" ?>>Index</a></li>
-                                    <li><a href="index.php" <?= $ModeDeTri="date" ?>>Date</a></li>
-                                    <li><a href="index.php" <?= $ModeDeTri="intervention" ?>>Intervention</a></li>
-                                    <li><a href="index.php" <?= $ModeDeTri="etage" ?>>Etage</a></li>
+                                    <!-- blem avec 'ORDER BY date'! date considéré comme une fonction-->
+                                    <li><a href="index.php" <?= $ModeDeTri="date" ?>>Date</a></li> 
+                                    <li><a href="index.php" <?= $ModeDeTri="SELECT * FROM crud_concierge_i ORDER BY intervention" ?>>Intervention</a></li>
+                                    <li><a href="index.php" <?= $ModeDeTri="SELECT * FROM crud_concierge_i ORDER BY etage" ?>>Etage</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -123,7 +125,6 @@ $req = $req->fetchAll();
 
             <!-- affichage tableau -->
             <?php for ($i = 0; $i < count($req); $i++) {
-                $index = strval($i);
             ?>
                 <tr>
                     <td><?= $req[$i]['id'] ?></td>
