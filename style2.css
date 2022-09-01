@@ -128,9 +128,10 @@ body {
 .MenuD1 ul{
     list-style-type: none;
     background-color: var(--background2);
+    padding: 0; /* ajout a verif */
 }
 .MenuD1 ul li{
-    float: left;
+    /* float: left; */
     width: 25%;
     text-align: center;
     position: relative;
@@ -172,7 +173,7 @@ body {
     border-bottom: none;
 }
 .MenuD1 .deroulant{
-    width: 100%;
+    /* width: 100%; */
     background-color:var(--background2);
 }
 .MenuD1 .deroulant > a::after{
