@@ -73,15 +73,22 @@ class connexionDB
         return $req;
     }
 }
-// trier par colonne
-// order by id par defaut
-// recup valeur recup ds menu deroulant: ORDER BY valeur?
+// trier par colonne, order by id par defaut
+// recup valeur $modeDeTri recup ds menu deroulant: ORDER BY $modeDeTri
 
-$ModeDeTri = "SELECT * FROM crud_concierge_i ORDER BY id";
-$req = $DB->query($ModeDeTri);
+// if ($ModeDeTri=="") {
+//     $req = $DB->query("SELECT * FROM crud_concierge_i ORDER BY id");
+//     $req = $req->fetchAll();
+//     effacer: $modeDeTri=""
+// } else {
+//     echo $ModeDeTri;
+//     $req = $DB->query($ModeDeTri); 
+// }
+
+// $ModeDeTri = "SELECT * FROM crud_concierge_i ORDER BY id";
+// $req = $DB->query($ModeDeTri);
+$req = $DB->query("SELECT * FROM crud_concierge_i ORDER BY id");
 $req = $req->fetchAll();
-
-// effacer: $modeDeTri=""
 
 ?>
 
@@ -96,18 +103,18 @@ $req = $req->fetchAll();
                 <td>Type d'intervention</td>
                 <td>Etage</td>
                 <td>
-                <nav class="MenuD1">
-                    <ul>
-                        <li class="deroulant"><a>Trier par</a>
-                            <ul class="sous">
-                                <li><a href="index.php" value="id">Index</a></li>
-                                <li><a href="index.php"value="date">Date</a></li>
-                                <li><a href="index.php" value="intervention">Intervention</a></li>
-                                <li><a href="index.php" value="etage">Etage</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+                    <nav class="MenuD1">
+                        <ul>
+                            <li class="deroulant"><a>Trier par</a>
+                                <ul class="sous">
+                                    <li><a href="index.php" <?= $ModeDeTri="SELECT * FROM crud_concierge_i ORDER BY id" ?>>Index</a></li>
+                                    <li><a href="index.php" <?= $ModeDeTri="date" ?>>Date</a></li>
+                                    <li><a href="index.php" <?= $ModeDeTri="intervention" ?>>Intervention</a></li>
+                                    <li><a href="index.php" <?= $ModeDeTri="etage" ?>>Etage</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
                 </td>
             </tr>
         </thead>

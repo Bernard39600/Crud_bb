@@ -5,7 +5,7 @@
     --border-color: grey;
     --text-main: black;
     --background: white;
-    --background2: rgb(230, 230, 230); ; 
+    --background2: rgb(230, 230, 230);
     --border-radius: 0.5rem;
 }
 
@@ -121,46 +121,36 @@ body {
 .MenuD1{
     width: 100%;
     margin: 0 auto;
-    background-color: white;
+    background-color: var(--background);
     position: sticky;
     top: 0px;
 }
-
 .MenuD1 ul{
     list-style-type: none;
     background-color: var(--background2);
 }
-
 .MenuD1 ul li{
     float: left;
     width: 25%;
     text-align: center;
     position: relative;
 }
-
 .MenuD1 ul::after{
     /* content: ""; */
     display: table;
     clear: both;
 }
-
 .MenuD1 a{
     display: block;
     text-decoration: none;
-    color: black;
-    padding: 10px 0px;
+    color: var(--text-main);
     width: 80px;
 }
-
 .MenuD1 a:hover{
     color: var(--primary_hover);
-    /*border-bottom: 2px solid var(--primary_hover);*/
 }
-
 .MenuD1 .sous{
     display: none;
-    /* box-shadow: 0px 1px 2px #CCC; */
-    /* background-color: white; */
     padding: 10px;
     position: absolute;
     width: 120px;
@@ -180,7 +170,10 @@ body {
 }
 .MenuD1 .sous a:hover{
     border-bottom: none;
-    background-color: RGB(200,200,200);
+}
+.MenuD1 .deroulant{
+    width: 100%;
+    background-color:var(--background2);
 }
 .MenuD1 .deroulant > a::after{
     content:" ▼";
@@ -203,7 +196,5 @@ body {
 }
 .trash a{
     text-decoration: none;
-    color: var(--text-main);
-    
+    color: var(--text-main); 
 }
-
